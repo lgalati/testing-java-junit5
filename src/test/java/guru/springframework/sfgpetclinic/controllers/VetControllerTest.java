@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.ControllerTests;
 import guru.springframework.sfgpetclinic.fauxspring.Model;
 import guru.springframework.sfgpetclinic.fauxspring.ModelMapImpl;
 import guru.springframework.sfgpetclinic.model.Vet;
@@ -14,7 +15,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class VetControllerTest {
+class VetControllerTest implements ControllerTests {
 
     VetService vetService;
     SpecialtyService specialtyService;
@@ -40,6 +41,7 @@ class VetControllerTest {
         Model model = new ModelMapImpl();
 
         String view = vetController.listVets(model);
+
         assertThat("vets/index").isEqualTo(view);
 
         Set modelAttribute = (Set) ((ModelMapImpl) model).getMap().get("vets");
